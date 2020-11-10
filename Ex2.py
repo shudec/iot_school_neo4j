@@ -1,8 +1,7 @@
 from InitDB import session
 
 # delete all nodes
-session.run("MATCH ()-[r]-() DELETE r")
-session.run("MATCH (n) DELETE n")
+session.run("MATCH (n) DETACH DELETE n")
 
 result = session.run("CREATE (ee:Person { name: \"Emil\", from: \"Sweden\", klout: 99 })  RETURN id(ee) AS node_id")
 emil = result.single()
